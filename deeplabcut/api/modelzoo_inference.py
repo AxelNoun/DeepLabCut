@@ -13,7 +13,7 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from deeplabcut.api._tf_routing import with_tensorflow_fallback
-from deeplabcut.core.deprecation import renamed_parameter
+from deeplabcut.core.deprecation import DeprecatedSince, renamed_parameter
 
 
 @with_tensorflow_fallback(
@@ -21,7 +21,7 @@ from deeplabcut.core.deprecation import renamed_parameter
     tensorflow_module="deeplabcut.tensorflow_compat.superanimal_inference",
     tensorflow_name="video_inference_superanimal_tf",
 )
-@renamed_parameter(old="videotype", new="video_extensions", since="3.0.0")
+@renamed_parameter(old="videotype", new="video_extensions", since=DeprecatedSince.PARAMETER_CONSISTENCY)
 def video_inference_superanimal(
     videos: str | list,
     superanimal_name: str,
